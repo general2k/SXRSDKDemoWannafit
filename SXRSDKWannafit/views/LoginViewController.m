@@ -75,7 +75,7 @@
         return;
         
     }
-    [[SXR shareInstance] SXRSDKLogin:self.username.text passwd:self.password.text callBack:^(NSDictionary *result, NSError *error) {
+    [[SXR shareInstance] SXRSDKLogin:self.username.text passwd:self.password.text callBack:^(NSURLSessionDataTask *task, NSDictionary *result, NSError *error){
         if (error) {
             UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@\nerror=%@",NSLocalizedString(@"Login Error", nil),error] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -105,7 +105,7 @@
         
     }
     
-    [[SXR shareInstance] SXRSDKLogout:^(NSDictionary *result, NSError *error) {
+    [[SXR shareInstance] SXRSDKLogout:nil callBack:^(NSURLSessionDataTask *task, NSDictionary *result, NSError *error){
         if (error) {
             UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@\nerror=%@",NSLocalizedString(@"Logout Error", nil),error] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {

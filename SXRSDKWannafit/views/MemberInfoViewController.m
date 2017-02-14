@@ -84,7 +84,7 @@
         return;
         
     }
-    [[SXR shareInstance] SXRSDKGetMemberInfo:^(NSDictionary *result, NSError *error) {
+    [[SXR shareInstance] SXRSDKGetMemberInfo:nil callBack:^(NSURLSessionDataTask *task, NSDictionary *result, NSError *error){
         if (error) {
             UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@\nerror=%@",NSLocalizedString(@"Send Get Memberinfo Error", nil),error] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {

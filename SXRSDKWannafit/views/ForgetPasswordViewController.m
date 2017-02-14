@@ -55,7 +55,7 @@
         return;
         
     }
-    [[SXR shareInstance] SXRSDKForgetPasswd:self.username.text language:@"chs" callBack:^(NSDictionary *result, NSError *error) {
+    [[SXR shareInstance] SXRSDKForgetPasswd:self.username.text language:@"chs" callBack:^(NSURLSessionDataTask *task, NSDictionary *result, NSError *error){
         if (error) {
             UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@\nerror=%@",NSLocalizedString(@"Forget password Error", nil),error] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {

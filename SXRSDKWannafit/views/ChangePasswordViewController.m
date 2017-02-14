@@ -63,7 +63,7 @@
         return;
         
     }
-    [[SXR shareInstance] SXRSDKChangePasswd:self.oldpassword.text newPasswd:self.newpassword.text callBack:^(NSDictionary *result, NSError *error) {
+    [[SXR shareInstance] SXRSDKChangePasswd:nil oldPasswd:self.oldpassword.text newPasswd:self.newpassword.text callBack:^(NSURLSessionDataTask *task, NSDictionary *result, NSError *error) {
         if (error) {
             UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@\nerror=%@",NSLocalizedString(@"Change Password Error", nil),error] preferredStyle:UIAlertControllerStyleAlert];
             [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {

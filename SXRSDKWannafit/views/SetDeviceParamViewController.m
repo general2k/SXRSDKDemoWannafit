@@ -68,17 +68,17 @@
         [self presentViewController:ac animated:YES completion:nil];
         return;
     }
-    NSMutableDictionary* bonginfo = [SXRSDKUtils getDeviceInformation:[SXRSDKConfig getCurrentDeviceUUID]];
-    [bonginfo setObject:[NSNumber numberWithInt:10] forKey:BONGINFO_KEY_JY_SCREENTIME];
-    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_SCREEN_DIRECTION_LEFT] forKey:BONGINFO_KEY_JY_SCREENDIRECTION];
-    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_OPEN] forKey:BONGINFO_KEY_JY_NAP_ALARM];
-    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_OPEN] forKey:BONGINFO_KEY_JY_SLEEP_ALARM];
-    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_CLOSE] forKey:BONGINFO_KEY_JY_IS_ENGLISH];
-    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_CLOSE] forKey:BONGINFO_KEY_JY_IS_OPEN_24H_HEART];
+    NSMutableDictionary* bonginfo = [[NSMutableDictionary alloc] init];
+    [bonginfo setObject:[NSNumber numberWithInt:10] forKey:JY_PARAM_SCREENTIME];
+    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_SCREEN_DIRECTION_LEFT] forKey:JY_PARAM_SCREENDIRECTION];
+    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_OPEN] forKey:JY_PARAM_NAP_ALARM];
+    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_OPEN] forKey:JY_PARAM_SLEEP_ALARM];
+    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_CLOSE] forKey:JY_PARAM_IS_ENGLISH];
+    [bonginfo setObject:[NSNumber numberWithInt:JY_PARAM_VALUE_CLOSE] forKey:JY_PARAM_IS_OPEN_24H_HEART];
     
     
     
-    [SXRService SetDeviceParam:nil];
+    [SXRService SetDeviceParam:bonginfo];
     
 }
 

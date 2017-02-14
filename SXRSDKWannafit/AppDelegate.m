@@ -21,6 +21,40 @@
     // Override point for customization after application launch.
     [SXRService SharedInstance];
     [SXRService InitSXRSDK];
+    NSDateFormatter* formate = [[NSDateFormatter alloc] init];
+    formate.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate* date1 = [formate dateFromString:@"2016-11-22 00:00:00"];
+    NSLog(@"%@,%f",date1,[date1 timeIntervalSince1970]);
+    
+    formate.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    NSDate* date2 = [formate dateFromString:@"2016-11-22 00:00:00"];
+    NSLog(@"%@,%f",date2,[date2 timeIntervalSince1970]);
+    
+    NSDate* now = [NSDate date];
+    NSLog(@"now = %@",[formate stringFromDate:now]);
+    
+    NSLog(@"secondsFromGMT = %ld",(long)[[NSTimeZone localTimeZone]secondsFromGMT]);
+    
+    NSDateFormatter* format1 = [[NSDateFormatter alloc] init];
+    format1.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    format1.dateFormat = @"yy-MM-dd HH:mm:ss";
+    NSLog(@"now timezone = %@",[format1 stringFromDate:now]);
+    
+    dispatch_queue_t dispatchqueue = dispatch_queue_create("com.yoofitness.serverlogic", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(dispatchqueue, ^{
+        NSLog(@"diaptch1");
+        sleep(5);
+    });
+    dispatch_async(dispatchqueue, ^{
+        NSLog(@"diaptch2");
+        sleep(15);
+    });
+    dispatch_async(dispatchqueue, ^{
+        NSLog(@"diaptch3");
+        sleep(10);
+    });
+    
+
     return YES;
 }
 
